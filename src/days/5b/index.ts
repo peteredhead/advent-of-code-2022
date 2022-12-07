@@ -1,7 +1,7 @@
 import { fileToArray, readFile } from "../../helpers/file";
 const data = readFile(__dirname, "input.txt");
 
-const stacks = {};
+const stacks: Record<number, string[]> = {};
 
 const prepare = () => {
   const [initialState, moves] = data.split("\n\n");
@@ -32,7 +32,7 @@ const solve = (moves: string[]) => {
     move(numberOfCrates, fromStack, toStack);
   });
   return Object.values(stacks)
-    .map((stack: string) => stack[stack.length - 1])
+    .map((stack: string[]) => stack[stack.length - 1])
     .join("");
 };
 
